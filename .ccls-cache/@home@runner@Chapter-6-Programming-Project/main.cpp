@@ -1,4 +1,4 @@
-// Calculating Celcius from Fahrenheit
+// Calculating Scores for Contestants
 
 #include <iostream>
 #include <vector>
