@@ -1,17 +1,32 @@
 // Calculating Celcius from Fahrenheit
 
 #include <iostream>
-#include <iomanip>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
-double fahrenheitToCelsius(double fahrenheit) {
-  return 5.0 / 9.0 * (fahrenheit - 32.0);
+double calculateScore(vector<double> scores) {
+
+  sort(scores.begin(), scores.end());
+  
+  scores.erase(scores.begin());
+  scores.pop_back();
+ 
+  double sum = 0;
+  for (double score : scores) {
+    sum += score;
+  }
+  return sum / scores.size();
 }
 int main() {
-  cout << "Fahrenheit" << setw(10) << "Celsius" << endl;
-  for (int fahrenheit = 0; fahrenheit <= 20; fahrenheit++) {
-    double celsius = fahrenheitToCelsius(fahrenheit);
-    cout << setw(10) << fahrenheit << setw(10) << fixed << setprecision(2) << celsius << endl;
+  vector<double> scores(5);
+
+  cout << "Enter the scores for the contestant (separated by spaces): ";
+  for (int i = 0; i < 5; i++) {
+    cin >> scores[i];
   }
+
+  double Score = calculateScore(scores);
+  cout << "The contestant's final score is: " << Score << endl;
   return 0;
 }
